@@ -26,11 +26,5 @@ public class OyunEkrani extends JFrame {
         ekran.add(oyun);
         
         ekran.setVisible(true);
-        
-        
-        
-        
     }
-    
-    
 }

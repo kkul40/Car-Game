@@ -15,9 +15,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-
 public class Oyun extends JPanel implements KeyListener, ActionListener{
-
     
     Timer timer = new Timer(2,this);
     
@@ -51,8 +49,6 @@ public class Oyun extends JPanel implements KeyListener, ActionListener{
     private int serit0Y = -300;
     private int serit00Y = -236;
     private int seritdirY = 4;
-   
-    
     
     private BufferedImage image;
     
@@ -63,8 +59,7 @@ public class Oyun extends JPanel implements KeyListener, ActionListener{
     private boolean duman = false;
     private BufferedImage dumanimg ;
     private int yon = 0;
-    
-    
+
     private boolean esc = false;
     
     private String harita[][]= new String[54][3];
@@ -84,7 +79,6 @@ public class Oyun extends JPanel implements KeyListener, ActionListener{
     Random r = new Random();
     
     public Oyun() {
-        
         // RESİMLER
         try {
             image = ImageIO.read(this.getClass().getResource("araba.png"));
@@ -117,15 +111,11 @@ public class Oyun extends JPanel implements KeyListener, ActionListener{
             Logger.getLogger(Oyun.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        
-        
         // ARKA PLAN RENGİ
         setBackground(Color.black);
         addKeyListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
-        
-        
     }
 
     @Override
@@ -141,7 +131,7 @@ public class Oyun extends JPanel implements KeyListener, ActionListener{
         if (dusmanKontrol2 <=49) {
             if (dusmanKontrol2 == 49 && dusman2 >=mesafe) {
                 if (bolum >= 4) {
-                    
+                    // BİR ŞEY YAPMA
                 }else{
                     bolum++;
                     ekstraSkor +=10;
@@ -253,7 +243,6 @@ public class Oyun extends JPanel implements KeyListener, ActionListener{
             }
         }
         
-        
         // SERİT 1
         g.setColor(Color.gray);
         g.fillRect(190, serit1Y, 3, 200);
@@ -274,7 +263,7 @@ public class Oyun extends JPanel implements KeyListener, ActionListener{
         // SAĞ - SOL ŞERİT ÇİZGİLERİ
         g.setColor(Color.gray);
         g.fillRect(0, 0, 10, 900);
-        g.fillRect(584, 0, 10, 900);
+        g.fillRect(574, 0, 10, 900);
         
         // ARABA YÖNLENDİRME
         switch (yon) {
@@ -325,12 +314,10 @@ public class Oyun extends JPanel implements KeyListener, ActionListener{
                 g.drawString("Devam etmek için 'ENTER' tuşlayınız", 130, 360); 
             }
             
-            
             g.setFont(new Font("mono", Font.BOLD,15));
             g.drawString("Çıkmak İçin 'ESC' tuşlayınız", 200, 410); 
         }
-        
-        
+
         // OYUN BAŞLATMA EKRANI
         if (!oyunbaşla) {
             g.setColor(Color.green);
@@ -350,7 +337,6 @@ public class Oyun extends JPanel implements KeyListener, ActionListener{
         int c = e.getKeyCode();
         
         // SAĞ - SOL HAREKETLERİ
-        
         if (c == KeyEvent.VK_LEFT) {
             if (arabaX <114) {
                 
@@ -397,10 +383,8 @@ public class Oyun extends JPanel implements KeyListener, ActionListener{
                 System.out.println("--- Skor ve Bölüm Sıfırlandı ---");
                 HaritaOluştur();
                 System.out.println("");
-                
             }
         }
-        
         
         // OYUN DURAKLATMA
         if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
@@ -430,10 +414,7 @@ public class Oyun extends JPanel implements KeyListener, ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
-        
         if (oyun) {
-        
             // ARABA SAĞ VE SOL ANİMASYONU
             if (arabadirXX) {
                 arabaX+=arabadirX;
@@ -525,12 +506,9 @@ public class Oyun extends JPanel implements KeyListener, ActionListener{
                     duman = true;
                     oyun = false;
                     kalanHak--;
-                    
             }
         }
-        
         repaint();
-        
     }
     
     public void sagGit(){
@@ -549,7 +527,6 @@ public class Oyun extends JPanel implements KeyListener, ActionListener{
             arabadir_XX = true;
             yon = 2;
             arabaKont = false;
-            
         }
     }
     
@@ -563,13 +540,11 @@ public class Oyun extends JPanel implements KeyListener, ActionListener{
             esc = true;
             seritdirY = 0;
             dusmandirY = 0;
-
         }
         */
     }
     
     public void HaritaOluştur (){
-        
         haritaSayisi++;
         
         System.out.println(haritaSayisi+". Harita Oluşturuldu ***");
@@ -610,7 +585,6 @@ public class Oyun extends JPanel implements KeyListener, ActionListener{
             }
         }
         
-        
         // HARİTA YAZDIRMA
         for (int i = 0; i < 54; i++) {
             for (int j = 0; j < 3; j++) {
@@ -618,7 +592,6 @@ public class Oyun extends JPanel implements KeyListener, ActionListener{
                 System.out.print(harita[i][j] + " ");
             }
             System.out.println();
-            
         }
         
         /*
